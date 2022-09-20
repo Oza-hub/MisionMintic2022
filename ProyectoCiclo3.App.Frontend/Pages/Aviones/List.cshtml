@@ -2,18 +2,21 @@
 @model ProyectoCiclo3.App.Frontend.Pages.ListAvionesModel
 @{
 }
- 
+
 <h1>Listado de Aviones</h1>
 <table class="table">
     <thead>
+    <tr>
         <th>Id</th>
-        <th scope="col">marca</th>
-        <th scope="col">modelo</th>
-        <th scope="col">asientos</th>
-        <th scope="col">baños</th>
-        <th scope="col">peso</th>
-        <th>Acciones</th>
-    </thead>
+        <th scope="col">Marca</th>
+        <th scope="col">Modelo</th>
+        <th scope="col">Numero_asientos</th>
+        <th scope="col">Numero_baños</th>
+        <th scope="col">Capacidad</th>
+    </tr>
+  </thead>
+  <tbody>
+    
     @foreach (var avion in Model.Aviones)
     {
         <tr>

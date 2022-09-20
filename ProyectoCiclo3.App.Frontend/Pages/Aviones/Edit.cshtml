@@ -7,20 +7,20 @@
 <div class="text-center">
     <form method="POST">
         <input type="text" class="form-control d-none" id="id" name="id" required placeholder="id" minlength="3" asp-for="@aviones.id" readonly>
-       
-        <label for="marca" class="form-label">marca</label>
+        
+        <label for="marca" class="form-label">Marca</label>
         <input type="text" class="form-control" id="marca" name="marca" required placeholder="marca" asp-for="@aviones.marca">
         
-        <label for="modelo" class="form-label">modelo</label>
+        <label for="modelo" class="form-label">Modelo</label>
         <input type="text" class="form-control" id="modelo" name="modelo" required placeholder="modelo" asp-for="@aviones.modelo">
 
-        <label for="numero_asientos" class="form-label">numero_asientos</label>
+        <label for="numero_asientos" class="form-label">Numero_asientos</label>
         <input type="number" class="form-control" id="numero_asientos" name="numero_asientos" required placeholder="numero_asientos" asp-for="@aviones.numero_asientos">
 
-        <label for="numero_banos" class="form-label">numero_banos</label>
+        <label for="numero_banos" class="form-label">Numero_banos</label>
         <input type="number" class="form-control" id="numero_banos" name="numero_banos" required placeholder="numero_banos" asp-for="@aviones.numero_banos">
 
-        <label for="capacidad" class="form-label">capacidad</label>
+        <label for="capacidad" class="form-label">Napacidad</label>
         <input type="number" class="form-control" id="capacidad" name="capacidad" required placeholder="capacidad" asp-for="@aviones.capacidad">
         <hr>
         <button type="submit" class="btn btn-success">Actualizar</button>

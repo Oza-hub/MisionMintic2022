@@ -12,29 +12,17 @@ namespace ProyectoCiclo3.App.Frontend.Pages
     public class ListAvionesModel : PageModel
     {
        
-        private readonly RepositorioAviones RepositorioAviones;
-        public IEnumerable<Aviones> Aviones {get;set;}
-        [BindProperty]
-        public Aviones Avion {get;set;}
+    private readonly RepositorioAviones repositorioAviones;
+    public IEnumerable<Aviones> Aviones {get;set;}
  
-    public ListAvionesModel(RepositorioAviones RepositorioAviones)
+    public ListAvionesModel(RepositorioAviones repositorioAviones)
     {
-        this.RepositorioAviones=RepositorioAviones;
+        this.repositorioAviones=repositorioAviones;
      }
  
     public void OnGet()
     {
-        Aviones=RepositorioAviones.GetAll();
+        Aviones=repositorioAviones.GetAll();
     }
-    public IActionResult OnPost()
-    {
-        if(Avion.id>0)
-        {
-            RepositorioAviones.Delete(Avion.id);
-        }
-        return RedirectToPage("./List");
-    }
-
-
     }
 }
