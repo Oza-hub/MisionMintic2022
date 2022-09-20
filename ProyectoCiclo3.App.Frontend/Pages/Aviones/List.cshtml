@@ -1,0 +1,60 @@
+@page
+@model ProyectoCiclo3.App.Frontend.Pages.ListAvionesModel
+@{
+}
+ 
+<h1>Listado de Aviones</h1>
+<table class="table">
+    <thead>
+        <th>Id</th>
+        <th scope="col">marca</th>
+        <th scope="col">modelo</th>
+        <th scope="col">asientos</th>
+        <th scope="col">baños</th>
+        <th scope="col">peso</th>
+        <th>Acciones</th>
+    </thead>
+    @foreach (var avion in Model.Aviones)
+    {
+        <tr>
+            <td>@avion.id</td>
+            <td>@avion.marca</td>
+            <td>@avion.modelo</td>
+            <td>@avion.numero_asientos</td>
+            <td>@avion.numero_banos</td>
+            <td>@avion.capacidad</td>
+            <td>
+             <div class="btn-group" role="group">
+                <a class="btn btn-info" asp-page="./Details" asp-route-avionId="@avion.id"><i class="fas fa-adjust"></i>Ver</a>
+                <a class="btn btn-info" asp-page="./Edit" asp-route-avionId="@avion.id">Editar</a>
+                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal_@avion.id">
+                  Eliminar
+                </button>
+
+                <div class="modal fade" id="exampleModal_@avion.id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Eliminacion de Avion</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          Esta seguro que desea eliminar el Avion @avion.marca
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                          <form method="POST">
+                            <input type="number" class="form-control d-none" id="id" name="id" placeholder="id" asp-for="@avion.id">
+                            <button type="submit"class="btn btn-danger" href="">Eliminar</button>
+                          </form>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+              </td>
+        </tr>
+    }
+</table>

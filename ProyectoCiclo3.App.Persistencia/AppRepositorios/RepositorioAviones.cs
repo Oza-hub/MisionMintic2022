@@ -7,25 +7,49 @@ namespace ProyectoCiclo3.App.Persistencia.AppRepositorios
 {
     public class RepositorioAviones
     {
-        List<Aviones> aviones;
- 
-    public RepositorioAviones()
-        {
-            aviones= new List<Aviones>()
-            {
-                new Aviones{id=1,modelo=2008,marca= "Boeing 777",numero_asientos= 100,numero_banos= 4,capacidad= 2000},
-                new Aviones{id=2,modelo=2021,marca= "A320",numero_asientos= 150,numero_banos= 8,capacidad= 3500},
-                new Aviones{id=3,modelo=1976,marca= "Boeing 757",numero_asientos= 35,numero_banos= 2,capacidad= 1200}
-            };
-        }
+        private readonly AppContext _appContext = new AppContext();
  
         public IEnumerable<Aviones> GetAll()
         {
-            return aviones;
+            return _appContext.Aviones;
         }
  
-        public Aviones GetWithId(int id){
-            return aviones.SingleOrDefault(a => a.id == id);
+        public Aviones GetAvionWithId(int id){
+            return _appContext.Aviones.Find(id);
+        }
+ 
+        public Aviones Update(Aviones newAvion){
+            var avion = _appContext.Aviones.Find(newAvion.id);
+            if(avion != null){
+                avion.marca = newAvion.marca;
+                avion.modelo = newAvion.modelo;
+                avion.numero_asientos = newAvion.numero_asientos;
+                avion.numero_banos = newAvion.numero_banos;
+                avion.capacidad = newAvion.capacidad;
+
+                //Guardar en base de datos
+                _appContext.SaveChanges();
+            }
+            return avion;
+        }
+ 
+        public Aviones Create(Aviones newAvion)
+        {
+            var addAvion = _appContext.Aviones.Add(newAvion);
+            //Guardar en base de datos
+            _appContext.SaveChanges();
+            return addAvion.Entity;
+        }
+ 
+        public Aviones Delete(int id)
+        {
+            var avion = _appContext.Aviones.Find(id);
+            if (avion != null){
+                _appContext.Aviones.Remove(avion);
+                //Guardar en base de datos
+                _appContext.SaveChanges();
+            }
+            return null;
         }
     }
 }
