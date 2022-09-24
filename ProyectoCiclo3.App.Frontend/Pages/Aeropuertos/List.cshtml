@@ -3,6 +3,12 @@
 @{
 }
  
+@if(Model.Error){
+<div class="alert alert-success">
+  <strong>Error!</strong> El registro no puede ser eliminado.
+</div>
+}   
+
 <table class="table table-hover">
   <thead>
     <tr>

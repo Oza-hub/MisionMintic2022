@@ -16,6 +16,8 @@ namespace ProyectoCiclo3.App.Frontend.Pages
     public IEnumerable<Aeropuertos> Aeropuertos {get;set;}
     [BindProperty]
     public Aeropuertos Aeropuerto {get;set;}
+    [TempData]
+    public bool Error {get;set;}
 
     public ListAeropuertosModel(RepositorioAeropuertos repositorioAeropuertos)
     {
@@ -31,7 +33,7 @@ namespace ProyectoCiclo3.App.Frontend.Pages
     {
         if(Aeropuerto.id>0)
         {
-            repositorioAeropuertos.Delete(Aeropuerto.id);
+            Error = repositorioAeropuertos.Delete(Aeropuerto.id);
         }
         return RedirectToPage("./List");
     }

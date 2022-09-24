@@ -40,16 +40,19 @@ namespace ProyectoCiclo3.App.Persistencia.AppRepositorios
             return addAeropuerto.Entity;
         }
 
-        public Aeropuertos Delete(int id)
+        public bool Delete(int id)
         {
-            var aeropuerto = _appContext.Aeropuertos.Find(id);
-            if (aeropuerto != null){
-                _appContext.Aeropuertos.Remove(aeropuerto);
-                //Guardar en base de datos
-                _appContext.SaveChanges();
+            try{
+                var aeropuerto = _appContext.Aeropuertos.Find(id);
+                if (aeropuerto != null){
+                    _appContext.Aeropuertos.Remove(aeropuerto);
+                    //Guardar en base de datos
+                    _appContext.SaveChanges();
+                }
+                return false;
+            }catch (Exception ex){
+                return true;
             }
-            return null;
         }
-
     }
 }
